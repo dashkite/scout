@@ -67,7 +67,7 @@ $defs:
           A dictionary of method types to method descriptions.
         type: object
         patternProperties:
-          '^[Gg]et$|^[Pp]ost$|^[Pp]ut$|^[Dd]elete$':
+          '^[Gg][Ee][Tt]$|^[Pp][Oo][Ss][Tt]$|^[Pp][Uu][Tt]$|^[Dd][Ee][Ll][Ee][Tt][Ee]$':
             $ref: '#/$defs/method'
         minProperties: 1
         additionalProperties: false
@@ -88,10 +88,6 @@ properties:
         $ref: '#/$defs/resource'
     minProperties: 1
     additionalProperties: false
-anyOf:
-  - required:
-    - schema
-    - resources
-  - required:
-    - resources
+required:
+  - resources
 additionalProperties: false
