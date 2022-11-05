@@ -6,6 +6,7 @@ $defs:
     title: Request
     description: >-
       A request consists of a schema for the content of the request.
+    type: object
     properties:
       schema:
         $ref: 'https://json-schema.org/draft/2020-12/schema'
@@ -20,6 +21,7 @@ $defs:
     title: Response
     description: >-
       A response consists of a schema for the content of the request.
+    type: object
     properties:
       schema:
         $ref: 'https://json-schema.org/draft/2020-12/schema'
