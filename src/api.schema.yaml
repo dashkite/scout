@@ -84,7 +84,7 @@ properties:
       A dictionary of resource names to resource descriptions.
     type: object
     patternProperties:
-      '^(([A-Za-z\-])([ ]{0,1}))+$':
+      '^(([A-Za-z0-9\-])([ ]{0,1}))+$':
         $ref: '#/$defs/resource'
     minProperties: 1
     additionalProperties: false
