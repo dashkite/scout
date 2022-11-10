@@ -10,5 +10,13 @@ presets:
           glob:
             - '{src,test}/**/*.coffee'
 
+  yaml:
+    targets:
+      node: &yaml
+        - preset: js
+          glob:
+            - "{src,test}/**/*.yaml"
+      browser: *yaml
+
   schema:
-    glob: "src/**/*.schema.yaml"
+    glob: "src/**/schema.yaml"
