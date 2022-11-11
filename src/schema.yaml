@@ -1,0 +1,93 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+
+$defs:
+
+  request:
+    title: Request
+    description: >-
+      A request consists of a schema for the content of the request.
+    type: object
+    properties:
+      schema:
+        $ref: 'https://json-schema.org/draft/2020-12/schema'
+      content-type:
+        description: >-
+          The list of content-types for the content of the request.
+        type: array
+        items:
+          type: string
+
+  response:
+    title: Response
+    description: >-
+      A response consists of a schema for the content of the request.
+    type: object
+    properties:
+      schema:
+        $ref: 'https://json-schema.org/draft/2020-12/schema'
+      content-type:
+        description: >-
+          The list of content-types for the content of the response.
+        type: array
+        items:
+          type: string
+      status:
+        description: >-
+          The list of statuses the response can return.
+        type: array
+        items:
+          type: integer
+
+  method:
+    title: Method
+    description: >-
+      A method consists of a request and response description.
+    type: object
+    properties:
+      request:
+        $ref: '#/$defs/request'
+      response:
+        $ref: '#/$defs/response'
+    required:
+      - response
+
+  resource:
+    title: Resource Description
+    description: >-
+      A resource description consists of a url template and methods.
+    type: object
+    properties:
+      template:
+        description: >-
+          The url template for the resource.
+        type: string
+        pattern: '^[A-Za-z0-9{}?&+*~\-\/]+$'
+      methods:
+        description: >-
+          A dictionary of method types to method descriptions.
+        type: object
+        patternProperties:
+          '^[Gg][Ee][Tt]$|^[Pp][Oo][Ss][Tt]$|^[Pp][Uu][Tt]$|^[Dd][Ee][Ll][Ee][Tt][Ee]$':
+            $ref: '#/$defs/method'
+        minProperties: 1
+        additionalProperties: false
+
+title: API Description
+description: >-
+  An API description is a dictionary of resource names to resource descriptions.
+type: object
+properties:
+  schema:
+    $ref: 'https://json-schema.org/draft/2020-12/schema'
+  resources:
+    description: >-
+      A dictionary of resource names to resource descriptions.
+    type: object
+    patternProperties:
+      '^(([A-Za-z0-9\-])([ ]{0,1}))+$':
+        $ref: '#/$defs/resource'
+    minProperties: 1
+    additionalProperties: false
+required:
+  - resources
+additionalProperties: false
