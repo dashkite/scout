@@ -29,7 +29,19 @@ do ->
       { request, response } = description.resources.foo.methods.post
       assert request?
       assert response?
+
+    test "resource iterator", ->
+      for resource from description
+        assert resource.name?
+
+    test "method iterator", ->
+      for method from description.resources.foo
+        assert method.name?
         
+    test "method assignment", ->
+      method = description.resources.foo.methods.post
+      method.authorization = [ "rune" ]
+      assert description.data.resources.foo.methods.post.signatures.request.authorization?
   ]
 
   process.exit success

@@ -1,5 +1,7 @@
 import * as Meta from "@dashkite/joy/metaclass"
 import * as Type from "@dashkite/joy/type"
+import * as Text from "@dashkite/joy/text"
+import { Method } from "./method"
 
 class Resource
 
@@ -17,9 +19,18 @@ class Resource
       methods: ->
         new Proxy @resource.methods,
           get: ( target, name, self ) ->
-            ( Reflect.get target, name, self ).signatures
+            if ( method = Reflect.get target, name, self )?
+              Method.from { name, method.signatures... }
+
+      entries: ->
+        Object.values @methods
+
+      options: ->
+        Text.join ",", @entries
 
   ]
+
+  [ Symbol.iterator ]: -> @entries[ Symbol.iterator ]()
 
   @from: ({ name, resource }) ->
     Object.assign ( new @ ), { name, resource }
