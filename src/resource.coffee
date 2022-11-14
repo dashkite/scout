@@ -20,7 +20,7 @@ class Resource
         new Proxy @resource.methods,
           get: ( target, name, self ) ->
             if ( method = Reflect.get target, name, self )?
-              Method.from { name, method.signatures... }
+              Method.from { name, method... }
 
       entries: ->
         Object.values @methods

@@ -11,10 +11,9 @@ description = Description.from
       template: "/foo"
       methods:
         post:
-          signatures:
-            request: {}
-            response:
-              status: [ 200 ]
+          request: {}
+          response:
+            status: [ 200 ]
 
 do ->
 
@@ -41,7 +40,7 @@ do ->
     test "method assignment", ->
       method = description.resources.foo.methods.post
       method.authorization = [ "rune" ]
-      assert description.data.resources.foo.methods.post.signatures.request.authorization?
+      assert description.data.resources.foo.methods.post.request.authorization?
   ]
 
   process.exit success
