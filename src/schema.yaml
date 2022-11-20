@@ -77,6 +77,10 @@ description: >-
   An API description is a dictionary of resource names to resource descriptions.
 type: object
 properties:
+  name:
+    description: >-
+      A name for the API description.
+    type: string
   schema:
     $ref: 'https://json-schema.org/draft/2020-12/schema'
   resources:
