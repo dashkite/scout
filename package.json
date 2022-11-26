@@ -48,6 +48,8 @@
   },
   "dependencies": {
     "@dashkite/joy": "^0.3.16",
+    "@dashkite/maeve": "file:../maeve",
+    "@dashkite/media-type": "file:../media-type",
     "@dashkite/url-codex": "file:../url-codex"
   }
 }
