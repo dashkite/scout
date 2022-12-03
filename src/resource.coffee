@@ -1,6 +1,6 @@
 import * as Meta from "@dashkite/joy/metaclass"
 import * as Type from "@dashkite/joy/type"
-import * as Text from "@dashkite/joy/text"
+import * as It from "@dashkite/joy/iterable"
 import { Method } from "./method"
 
 class Resource
@@ -26,7 +26,7 @@ class Resource
         Object.values @methods
 
       options: ->
-        Text.join ",", @entries
+        It.join ",", Object.keys @methods
 
   ]
 
