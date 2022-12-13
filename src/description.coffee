@@ -21,7 +21,7 @@ class Description
 
   [ Symbol.iterator ]: -> @entries[ Symbol.iterator ]()
 
-  @discover: ({ origin, domain, lambda }) ->
+  @discover: ({ domain, lambda }) ->
     response = await Sky.fetch {
       domain, lambda
       resource: { name: "description" }
