@@ -2,6 +2,7 @@ import * as Meta from "@dashkite/joy/metaclass"
 import * as Type from "@dashkite/joy/type"
 import * as It from "@dashkite/joy/iterable"
 import { Method } from "./method"
+import * as URLCodex from "@dashkite/url-codex"
 
 class Resource
 
@@ -34,6 +35,9 @@ class Resource
 
   @from: ({ name, resource }) ->
     Object.assign ( new @ ), { name, resource }
+
+  encode: ( bindings ) ->
+    URLCodex.encode @template, bindings
 
 
 export {

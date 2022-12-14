@@ -49,7 +49,7 @@ class Description
       for template in templates
         if ( bindings = URLCodex.match template, target )?
           return { name, bindings }
-
+  
 export {
   Description
 }
