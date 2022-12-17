@@ -11,7 +11,6 @@ class Resource
     Meta.getters
 
       templates: ->
-
         { template, templates } = @resource
         if template?
           if Type.isArray template then template else [ template ]
@@ -37,7 +36,7 @@ class Resource
     Object.assign ( new @ ), { name, resource }
 
   encode: ( bindings ) ->
-    URLCodex.encode @template, bindings
+    URLCodex.encode @templates[0], bindings
 
 
 export {
