@@ -34,10 +34,10 @@ class Description
   @from: ( value ) ->
     Object.assign ( new @ ),
       _: if value.request?
-          { request } = value
-          do -> await @discover request
-        else if value.resources?
-          value
+        { request } = value
+        do -> await @discover request
+      else if value.resources?
+        value
 
   @decode: ( request ) ->
     ( await @from { request })
