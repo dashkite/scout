@@ -1,27 +1,89 @@
 # Sky API Description
 
-_Convenience wrapper for Sky API Descriptions_
+_Convenience functions for working with Sky API descriptions_
 
-```coffeescript
-import { Description } from "@dashkite/sky-api-description"
+## API
 
-# implict discovery
-description = await Description.from { request }
+### discover
 
-# URL target decoding based on description templates
-{ name, bindings } = description.decode request
+*discover origin ⇢ api*
+*discover domain ⇢ api*
+*discover resource ⇢ api*
 
-# simplified and normalized accessors
-contentType = description
-	.resources
-  .blogs
-  .methods
-  .post
-  .response["content-type"]
-```
+Make a discovery call based on an origin, domain, or resource.
 
-## Features
+### get
 
-- Explicit and implicit discovery
-- Supports Sublime Request format
-- Normalized and simplified description accessors
+*get path, api → description*
+
+Given a logical path and an API description, returns the specified object from within the description or `undefined` if it doesn’t exist. The path is a dot-delimited list of _resource, method, signature_. The signature component is optional and the method component is optional if the signature is not specified.
+
+### description
+
+*description path, api → description*
+
+Given a logical path and an API description, returns the description property associated with the object.
+
+### resources
+
+*resources api → resource-list*
+
+Return a list of resources from an API description.
+
+### resource
+
+*resource name, api → resource*
+
+Returns the resource with the given name from an API description.
+
+### template
+
+*template name, api → url-template*
+*template resource → url-template*
+
+Returns the URL template associated with a resource.
+
+
+### methods
+
+*methods name, api → method-list*
+*methods resource → method-list*
+
+Returns a list of methods given either a resource name and an API description or an API resource description.
+
+### method
+
+*method path, api  → method*
+*method name, resource → method*
+
+Returns a method given either a path and an API description or an API resource description.
+
+### expects
+
+*Alias: expect, status*
+
+*expects path, api  → statuses*
+*expects method  → statuses*
+
+Returns the list of possible statuses for a response, given either a path and an API description or a signature.
+
+### signature
+
+*signature path, api  → signature*
+*signature name, method  → signature*
+
+Returns a method signature given either a path and an API description or a name (request or response) and a method.
+
+### schema
+
+*schema path, api  → schema*
+*schema signature  → schema*
+
+Returns the schema associated with a signature, given either a path and an API description or a signature.
+
+### types
+
+*types path, api  → types*
+*types signature  → types*
+
+Returns the content-types of a signature, given either a path and an API description or a signature.

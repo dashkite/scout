@@ -1,7 +1,7 @@
 {
-  "name": "@dashkite/sky-api-description",
+  "name": "@dashkite/sky-discovery",
   "version": "0.0.0",
-  "description": "Convenience wrapper for for Sky APIs",
+  "description": "Convenience functions for working with Sky API descriptions",
   "exports": {
     ".": {
       "browser": "./build/browser/src/index.js",

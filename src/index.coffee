@@ -1,3 +1,9 @@
-export * from "./method"
-export * from "./resource"
-export * from "./description"
+import discover from "./discover"
+
+API = {
+  discover
+}
+
+export default API
+
+  
