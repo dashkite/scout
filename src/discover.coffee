@@ -40,4 +40,4 @@ generic discover,
       @from response.content
 
 export default discover
-export { get }
+export { discover }
