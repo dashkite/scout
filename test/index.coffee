@@ -16,9 +16,16 @@ api =
             "content-type": [ "application/json" ]
             schema:
               type: "object"
+            authorization: [ "rune" ]
           response:
             status: [ 200 ]
             "content-type": [ "application/json" ]
+
+    bar:
+      description: "This is another test resource."
+      templates: [ "/{baz}/{buzz}" ]
+      # we're currently only using this to test the bindings
+      # combinator so it doesn't need any further detail
 
 do ->
 
@@ -37,7 +44,7 @@ do ->
 
     test "resources", ->
       resources = API.resources api
-      assert.equal resources.length, 1
+      assert.equal resources.length, 2
       assert.equal "foo", resources[0]?.name
 
     test "resource", ->
@@ -93,7 +100,22 @@ do ->
       statuses = API.statuses "foo.post", api
       assert.equal 200, statuses[0]
 
+    test "bindings", [
 
+      test "no bindings", ->
+        bindings = API.bindings "foo", api
+        assert.equal 0, bindings.length
+
+      test "has bindings", ->
+        bindings = API.bindings "bar", api
+        assert.deepEqual [ "baz", "buzz" ], bindings
+
+    ]  
+
+    test "authorization", ->
+      authorization = API.authorization "foo.post", api
+      assert.deepEqual [ "rune" ], authorization
+  
   ]
 
   if success then process.exit 0 else process.exit 1

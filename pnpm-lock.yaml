@@ -8,12 +8,6 @@ dependencies:
   '@dashkite/joy':
     specifier: ^0.3.16
     version: 0.3.16
-  '@dashkite/maeve':
-    specifier: link:../maeve
-    version: link:../maeve
-  '@dashkite/media-type':
-    specifier: link:../media-type
-    version: link:../media-type
   '@dashkite/url-codex':
     specifier: link:../url-codex
     version: link:../url-codex

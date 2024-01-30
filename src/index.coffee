@@ -12,6 +12,8 @@ import signature from "./signature"
 import schema from "./schema"
 import types from "./types"
 import accept from "./accept"
+import bindings from "./bindings"
+import authorization from "./authorization"
 
 API = {
   discover
@@ -28,6 +30,8 @@ API = {
   schema
   types
   accept
+  bindings
+  authorization
 }
 
 export default API

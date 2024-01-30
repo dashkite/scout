@@ -47,8 +47,6 @@
   },
   "dependencies": {
     "@dashkite/joy": "^0.3.16",
-    "@dashkite/maeve": "link:../maeve",
-    "@dashkite/media-type": "link:../media-type",
     "@dashkite/url-codex": "link:../url-codex"
   }
 }

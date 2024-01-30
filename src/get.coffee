@@ -30,5 +30,9 @@ generic get,
 
 get = Fn.curry Fn.binary get
 
+isPath = ( value ) ->
+  ( Type.isString value ) ||
+    ( Type.isArray value )
+
 export default get
-export { get }
+export { get, isPath }
