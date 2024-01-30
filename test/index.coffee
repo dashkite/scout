@@ -3,44 +3,97 @@ import print from "@dashkite/amen-console"
 import assert from "@dashkite/assert"
 
 # MUT
-import { Description } from "../src"
+import API from "../src"
 
-description = Description.from
+api =
   resources:
     foo:
-      template: "/foo"
+      description: "This is a test resource."
+      templates: [ "/foo" ]
       methods:
         post:
-          request: {}
+          request:
+            "content-type": [ "application/json" ]
+            schema:
+              type: "object"
           response:
             status: [ 200 ]
+            "content-type": [ "application/json" ]
 
 do ->
 
-  print await test "Sky API Description", [
+  print await test "Scout", [
 
-    test "decode", ->
-      { name, bindings } = description.decode target: "/foo"
-      assert.equal "foo", name
-      assert.deepEqual {}, bindings
+    test "discover", [
+      test "origin"
+      test "domain"
+      test "sublime"
+    ]
+    
+    test "description", ->
+      description = API.description "foo", api
+      assert.equal description,
+        "This is a test resource."
+
+    test "resources", ->
+      resources = API.resources api
+      assert.equal resources.length, 1
+      assert.equal "foo", resources[0]?.name
+
+    test "resource", ->
+      resource = API.resource "foo", api
+      assert.equal "foo", resource?.name
+
+    test "templates", ->
+      templates = API.templates "foo", api
+      assert.equal "/foo", templates[0]
+
+    test "template", ->
+      template = API.template "foo", api
+      assert.equal "/foo", template
+
+    test "get", [
+
+      test "resource", ->
+        resource = API.get "foo", api
+        assert resource.methods?
+
+      test "method"
+
+      test "signature"
+
+    ]
 
     test "methods", ->
-      { request, response } = description.resources.foo.methods.post
-      assert request?
-      assert response?
+      methods = API.methods "foo", api
+      assert.equal 1, methods.length
+      assert.equal "post", methods[0].name
 
-    test "resource iterator", ->
-      for resource from description
-        assert resource.name?
+    test "method", ->
+      method = API.method "foo.post", api
+      assert method.request?
 
-    test "method iterator", ->
-      for method from description.resources.foo
-        assert method.name?
-        
-    test "method assignment", ->
-      method = description.resources.foo.methods.post
-      method.authorization = [ "rune" ]
-      assert description.data.resources.foo.methods.post.request.authorization?
+    test "signature", ->
+      signature = API.signature "foo.post.response", api
+      assert.equal 200, signature.status[0]
+
+    test "types", ->
+      types = API.types "foo.post.response", api
+      assert.equal "application/json", types[0]
+
+    test "accept", ->
+      accept = API.accept "foo.post", api
+      assert.equal "application/json", accept[0]
+
+    test "schema", ->
+      schema = API.schema "foo.post.request", api
+      assert.equal "object", schema.type
+
+    test "statuses", ->
+      statuses = API.statuses "foo.post", api
+      assert.equal 200, statuses[0]
+
+
   ]
 
-  process.exit success
+  if success then process.exit 0 else process.exit 1

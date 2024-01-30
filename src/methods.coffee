@@ -21,7 +21,9 @@ generic methods,
 generic methods,
   Type.isObject,
   ( resource ) ->
-
+    if resource?
+      for name, method of resource.methods
+        { name, method... }
 
 export default methods
 export { methods }

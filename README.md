@@ -1,4 +1,4 @@
-# Sky API Description
+# Scout
 
 _Convenience functions for working with Sky API descriptions_
 
@@ -65,7 +65,7 @@ Returns a method given either a path and an API description or an API resource d
 *expects path, api  → statuses*
 *expects method  → statuses*
 
-Returns the list of possible statuses for a response, given either a path and an API description or a signature.
+Returns the list of possible statuses for a response, given either a path and an API description or a method.
 
 ### signature
 
@@ -87,3 +87,10 @@ Returns the schema associated with a signature, given either a path and an API d
 *types signature  → types*
 
 Returns the content-types of a signature, given either a path and an API description or a signature.
+
+### accept
+
+*accept path, api  → types*
+*method  → types*
+
+Returns the list of possible accept media types for a request, given either a path and an API description or a method. Effectively a convenience form of `types` for the response signature.

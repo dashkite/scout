@@ -1,5 +1,5 @@
 {
-  "name": "@dashkite/sky-discovery",
+  "name": "@dashkite/scout",
   "version": "0.0.0",
   "description": "Convenience functions for working with Sky API descriptions",
   "exports": {
@@ -10,15 +10,12 @@
     "./*": {
       "browser": "./build/browser/src/*.js",
       "node": "./build/node/src/*.js"
-    },
-    "./schema": {
-      "browser": "./build/browser/src/schema.js",
-      "node": "./build/node/src/schema.js"
     }
   },
   "main": "build/node/src/index.js",
   "files": [
-    "build/node/src"
+    "build/node/src",
+    "build/browser/src"
   ],
   "scripts": {
     "test": "genie test",

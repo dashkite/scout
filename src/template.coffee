@@ -20,7 +20,7 @@ generic template,
     ( api ) ->
       first templates name, api
 
-generic templates,
+generic template,
   Type.isObject,
   ( resource ) ->
     first templates resource

@@ -1,5 +1,6 @@
 resource = ( name, api ) ->
-  api?.resources?[ name ]
+  _resource = api?.resources?[ name ]
+  { name, _resource... }
 
 export default resource
 export { resource }
