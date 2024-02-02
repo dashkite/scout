@@ -34,6 +34,26 @@ API = {
   authorization
 }
 
+# TODO phase this out?
+export {
+  discover
+  get
+  description
+  resources
+  resource
+  templates
+  template
+  methods
+  method
+  statuses
+  signature
+  schema
+  types
+  accept
+  bindings
+  authorization
+}
+
 export default API
 
   
