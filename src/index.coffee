@@ -1,6 +1,8 @@
 import discover from "./discover"
 import get from "./get"
 import description from "./description"
+import decode from "./decode"
+import encode from "./encode"
 import resources from "./resources"
 import resource from "./resource"
 import templates from "./templates"
@@ -19,6 +21,8 @@ API = {
   discover
   get
   description
+  decode
+  encode
   resources
   resource
   templates
@@ -39,6 +43,8 @@ export {
   discover
   get
   description
+  decode
+  encode
   resources
   resource
   templates
@@ -55,5 +61,3 @@ export {
 }
 
 export default API
-
-  

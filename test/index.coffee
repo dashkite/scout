@@ -115,7 +115,24 @@ do ->
     test "authorization", ->
       authorization = API.authorization "foo.post", api
       assert.deepEqual [ "rune" ], authorization
+
+    test "encode", ->
+      resource =
+        name: "bar"
+        bindings:
+          baz: "abc"
+          buzz: "def"
+      assert.equal "/abc/def",
+        API.encode resource, api
   
+    test "decode", ->
+      assert.deepEqual ( API.decode "/abc/def", api ),
+        name: "bar"
+        bindings:
+          baz: "abc"
+          buzz: "def"
+
+
   ]
 
   if success then process.exit 0 else process.exit 1

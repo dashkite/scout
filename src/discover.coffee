@@ -9,7 +9,7 @@ isDomain = Type.isString
 isSkyRequest = ( value ) ->
   Sky?.fetch? && 
     ( Type.isObject value ) && 
-    ( value.domain? && value.lamda? )
+    ( value.domain? && value.lambda? )
 
 discover = generic name: "discover"
 
@@ -37,7 +37,7 @@ generic discover,
       headers: accept: [ "application/json" ]
     }
     if response.description == "ok"
-      @from response.content
+      JSON.parse response.content
 
 export default discover
 export { discover }
