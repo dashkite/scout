@@ -16,6 +16,7 @@ import types from "./types"
 import accept from "./accept"
 import bindings from "./bindings"
 import authorization from "./authorization"
+import aggregates from "./aggregates"
 
 API = {
   discover
@@ -36,6 +37,7 @@ API = {
   accept
   bindings
   authorization
+  aggregates
 }
 
 # TODO phase this out?
@@ -58,6 +60,7 @@ export {
   accept
   bindings
   authorization
+  aggregates
 }
 
 export default API

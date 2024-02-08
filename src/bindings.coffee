@@ -14,7 +14,7 @@ _bindings = ( _template ) ->
     for node in description.path when node.expression?
       result.push node.expression.variable
   if description.query?
-    for node in description.path when node.value.expression?
+    for node in description.query when node.value.expression?
       result.push node.value.expression.variable
   result
 

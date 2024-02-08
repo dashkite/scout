@@ -132,6 +132,10 @@ do ->
           baz: "abc"
           buzz: "def"
 
+    test "aggregates", [
+      test "has aggregates"
+      test "no aggregates"
+    ]
 
   ]
 
