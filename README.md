@@ -23,6 +23,13 @@ Returns the list of possible accept media types for a request, given either a pa
 
 Returns the list of permissable authorization schemes for a method, given either a path and an API description or a method.
 
+### aggregates
+
+*aggregates name, api → resource-name*
+*aggregates resource → resource-name*
+
+Returns the resource that the given resource aggregates, if any.
+
 
 ### bindings
 
