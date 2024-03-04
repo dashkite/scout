@@ -1,9 +1,11 @@
 import * as Fn from "@dashkite/joy/function"
 
-# TODO make this a proper generic with some error handling DAN!
 resource = Fn.curry ( name, api ) ->
-  _resource = api?.resources?[ name ]
-  { name, _resource... }
+  if api?.resources?
+    { domain, origin, resources } = api
+    { domain, origin, name, resources[ name ]... }
+  else
+    throw new Error "scout: invalid API definition"
 
 export default resource
 export { resource }

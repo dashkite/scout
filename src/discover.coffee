@@ -11,12 +11,16 @@ isSkyRequest = ( value ) ->
     ( Type.isObject value ) && 
     ( value.domain? && value.lambda? )
 
+getOrigin = ( domain ) -> "https://#{ domain }"
+
+getDomain = ( origin ) -> ( new URL origin ).host
+
 discover = generic name: "discover"
 
 generic discover,
   isDomain,
   ( domain ) ->
-    discover "https://#{ domain }"
+    discover getOrigin domain 
 
 generic discover,
   isOrigin,
@@ -25,7 +29,9 @@ generic discover,
       method: "get"
       headers: accept: [ "application/json" ]
     if 200 <= response.status < 300
-      response.json()
+      api = await response.json()
+      domain = getDomain origin
+      { api..., origin, domain }
 
 generic discover,
   isSkyRequest,
@@ -37,7 +43,9 @@ generic discover,
       headers: accept: [ "application/json" ]
     }
     if response.description == "ok"
-      JSON.parse response.content
+      api = JSON.parse response.content
+      origin = getOrigin domain
+      { api..., origin, domain }
 
 export default discover
 export { discover }
