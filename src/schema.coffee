@@ -7,6 +7,8 @@ isPath = ( value ) ->
   ( Type.isString value ) ||
     ( Type.isArray value )
 
+isResource = ( value ) -> value?.methods?
+
 schema = generic name: "schema"
 
 generic schema,
@@ -14,6 +16,12 @@ generic schema,
   Type.isObject,
   ( path, api ) ->
     schema get path, api
+
+generic schema,
+  isPath,
+  isResource,
+  ( path, resource ) ->
+    schema get path, resource
 
 # curried form, since we have a unary variant
 generic schema,

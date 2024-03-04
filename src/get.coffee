@@ -4,6 +4,10 @@ import * as Type from "@dashkite/joy/type"
 
 get = generic name: "get"
 
+isAPI = ( value ) -> value?.resources?
+
+isResource = ( value ) -> value?.methods?
+
 generic get,
   Type.isString,
   Type.isObject,
@@ -12,18 +16,22 @@ generic get,
 
 generic get,
   Type.isArray,
-  Type.isObject,
-  ( path, api ) ->
+  isAPI,
+  ([ resource, path... ], api ) ->
+    get path, api.resources[ resource ]
+
+generic get,
+  Type.isArray,
+  isResource,
+  ( path, resource ) ->
     switch path.length
+      when 0 then resource
       when 1
-        [ resource ] = path
-        api.resources?[ resource ]
+        [ method ] = path
+        resource.methods[ method ]
       when 2
-        [ resource, method ] = path
-        api.resources?[ resource ]?.methods[ method ]
-      when 3
-        [ resource, method, signature ] = path
-        api.resources?[ resource ]?.methods[ method ]?[ signature ]
+        [ method, signature ] = path
+        resource.methods[ method ]?[ signature ]
       else
         throw new Error "sky-discovery:
           invalid accessor path [ #{ path } ]"
