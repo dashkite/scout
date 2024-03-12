@@ -24,7 +24,7 @@ api =
     bar:
       description: "This is another test resource."
       templates: [ "/{baz}/{buzz}" ]
-      # we're currently only using this to test the bindings
+      # we're currently only using this to test the traits
       # combinator so it doesn't need any further detail
 
 do ->
@@ -100,16 +100,17 @@ do ->
       statuses = API.statuses "foo.post", api
       assert.equal 200, statuses[0]
 
-    test "bindings", [
+    test "traits", [
 
-      test "no bindings", ->
-        bindings = API.bindings "foo", api
-        assert.equal 0, bindings.length
+      test "no traits", ->
+        traits = API.traits "foo", api
+        assert.equal 0, traits.length
 
-      test "has bindings", ->
-        bindings = API.bindings "bar", api
-        assert.deepEqual [ "baz", "buzz" ], bindings
-
+      test "has traits", ->
+        traits = API
+          .traits "bar", api
+          .map ({ name }) -> name
+        assert.deepEqual [ "baz", "buzz" ], traits
     ]  
 
     test "authorization", ->

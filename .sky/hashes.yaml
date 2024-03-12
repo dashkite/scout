@@ -4,7 +4,7 @@ build/browser/src/bindings.js: G5uWYxhF
 build/browser/src/description.js: dG5gR5j-
 build/browser/src/discover.js: UdLj275o
 build/browser/src/get.js: zN3Ea7hr
-build/browser/src/index.js: JE303H4l
+build/browser/src/index.js: c332vumg
 build/browser/src/json-schema.js: no3f9EGe
 build/browser/src/method.js: dybpll6I
 build/browser/src/methods.js: 0KBQyQdJ
@@ -19,3 +19,4 @@ build/browser/src/types.js: XRlFghz7
 build/browser/src/decode.js: KL-vw_Vm
 build/browser/src/encode.js: giaYpzRZ
 build/browser/src/aggregates.js: dZPShgsR
+build/browser/src/traits.js: 0yfz5emP

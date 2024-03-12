@@ -14,11 +14,11 @@ import signature from "./signature"
 import schema from "./schema"
 import types from "./types"
 import accept from "./accept"
-import bindings from "./bindings"
+import traits from "./traits"
 import authorization from "./authorization"
 import aggregates from "./aggregates"
 
-API = {
+API = {  
   discover
   get
   description
@@ -35,7 +35,7 @@ API = {
   schema
   types
   accept
-  bindings
+  traits
   authorization
   aggregates
 }
@@ -58,7 +58,7 @@ export {
   schema
   types
   accept
-  bindings
+  traits
   authorization
   aggregates
 }
