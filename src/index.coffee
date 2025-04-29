@@ -40,7 +40,6 @@ API = {
   aggregates
 }
 
-# TODO phase this out?
 export {
   discover
   get

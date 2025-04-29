@@ -10,7 +10,6 @@ isRequest = ( value ) ->
 
 decode = generic name: "decode"
 
-# TODO support matching against full URL
 generic decode,
   isRequest,
   Type.isObject,

@@ -28,7 +28,6 @@ generic encode,
   isResource,
   Type.isObject,
   ( resource, api ) ->
-    # TODO possibly try each template?
     URLCodex.encode ( template resource.name, api ), 
       resource.bindings
 
