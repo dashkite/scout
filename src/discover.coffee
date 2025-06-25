@@ -1,6 +1,8 @@
 import { generic } from "@dashkite/joy/generic"
 import * as Type from "@dashkite/joy/type"
 
+isURL = ( value ) -> Type.isKind URL
+
 isOrigin = ( value ) ->
   ( Type.isString value ) && value.startsWith "https://"
 
@@ -16,6 +18,10 @@ getOrigin = ( domain ) -> "https://#{ domain }"
 getDomain = ( origin ) -> ( new URL origin ).host
 
 discover = generic name: "discover"
+
+generic discover,
+  isURL,
+  ( url ) -> discover url.origin
 
 generic discover,
   isDomain,
