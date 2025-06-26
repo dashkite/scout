@@ -4,7 +4,8 @@ import * as Type from "@dashkite/joy/type"
 isURL = ( value ) -> Type.isKind URL
 
 isOrigin = ( value ) ->
-  ( Type.isString value ) && value.startsWith "https://"
+  ( Type.isString value ) && 
+    (( value.startsWith "https://" ) || ( value.startsWith "http://" ))
 
 isDomain = Type.isString
 
