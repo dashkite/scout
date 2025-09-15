@@ -1,10 +1,10 @@
 import * as Fn from "@dashkite/joy/function"
-import { generic } from "@dashkite/joy/generic"
 import * as Type from "@dashkite/joy/type"
+import { generic } from "@dashkite/joy/generic"
 import method from "./method"
 import { isPath } from "./get"
 
-isMethod = ( value ) -> value?.request?
+isMethod = ( value ) -> value?.request? || value?.response?
 isMethodString = ( value ) -> 
   value in [ "get", "put", "patch", "delete", "post", "options", "head" ]
 
@@ -19,9 +19,13 @@ generic authorization,
     authorization method path, api
 
 generic authorization,
+  Type.isNullish,
+  -> undefined
+
+generic authorization,
   isMethod,
   ( method ) ->
-    method.request.authorization
+    method?.request?.authorization
 
 generic authorization,
   isMethodString,
