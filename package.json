@@ -1,6 +1,6 @@
 {
   "name": "@dashkite/scout",
-  "version": "0.8.20",
+  "version": "0.8.21",
   "description": "Convenience functions for working with Sky API descriptions",
   "exports": {
     ".": {
