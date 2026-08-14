@@ -71,7 +71,7 @@ $defs:
           A dictionary of method types to method descriptions.
         type: object
         patternProperties:
-          '^[Gg][Ee][Tt]$|^[Pp][Oo][Ss][Tt]$|^[Pp][Uu][Tt]$|^[Dd][Ee][Ll][Ee][Tt][Ee]$':
+          '^[Gg][Ee][Tt]$|^[Pp][Oo][Ss][Tt]$|^[Pp][Uu][Tt]$|^[Dd][Ee][Ll][Ee][Tt][Ee]$|^[Qq][Uu][Ee][Rr][Yy]$':
             $ref: '#/$defs/method'
         minProperties: 1
         additionalProperties: false
