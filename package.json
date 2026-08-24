@@ -51,6 +51,6 @@
   },
   "dependencies": {
     "@dashkite/joy": "0.12.40",
-    "@dashkite/url-codex": "0.5.0"
+    "@dashkite/url-codex": "link:../url-codex"
   }
 }
